@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comandos Git y GitHub</title>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <header>
@@ -19,6 +20,7 @@
         <li><a href="#configuracion">Configuración inicial</a></li>
         <li><a href="#trabajo-individual">Trabajo individual</a></li>
         <li><a href="#trabajo-equipo">Trabajo en equipo</a></li>
+        <li><a href="#otros-comandos">Otros comandos útiles</a></li>
       </ul>
     </nav>
     <main>
@@ -234,9 +236,9 @@ git pull</code></pre>
           guardar, primero los preparamos y luego creamos un commit.
         </p>
 
-        <pre><code>git status
-git add .
-git commit -m "feat: agregar formulario de registro"</code></pre>
+        <pre><code>git status</code></pre>
+        <pre><code>git add .</code></pre>
+        <pre><code>git commit -m "feat: agrega formulario de registro"</code></pre>
 
         <ul>
           <li>
@@ -492,7 +494,9 @@ Cambios de la otra rama
           Es importante revisar el resultado y probar que el proyecto siga
           funcionando correctamente antes de continuar.
         </p>
-        <h3>Otros comandos útiles de Git</h3>
+      </section>
+      <section id="otros-comandos">
+        <h2>4. Otros comandos útiles de Git</h2>
 
         <p>
           Además de los comandos utilizados en el flujo de trabajo, existen
@@ -500,7 +504,7 @@ Cambios de la otra rama
           modificaciones y administrar las ramas del proyecto.
         </p>
 
-        <h4>Consultar y administrar ramas</h4>
+        <h3>Consultar y administrar ramas</h3>
 
         <pre><code>git branch</code></pre>
         <pre><code>git branch -a</code></pre>
@@ -521,7 +525,7 @@ Cambios de la otra rama
           </li>
         </ul>
 
-        <h4>Consultar el historial de cambios</h4>
+        <h3>Consultar el historial de cambios</h3>
 
         <pre><code>git log --oneline</code></pre>
 
@@ -530,7 +534,7 @@ Cambios de la otra rama
           identificador y el mensaje de cada commit.
         </p>
 
-        <h4>Comparar modificaciones</h4>
+        <h3>Comparar modificaciones</h3>
 
         <pre><code>git diff</code></pre>
 

@@ -1,0 +1,261 @@
+/* =========================================================
+   Comandos Git y GitHub útiles - Hoja de estilos
+   ========================================================= */
+
+/* Tipografías: Inter para leer y JetBrains Mono para el código */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+/* ---------- Variables de color ---------- */
+:root {
+  --naranja-git: #f05032;
+  --naranja-suave: #fff1ec;
+  --violeta: #6e40c9;
+  --fondo: #f6f4f1;
+  --tarjeta: #ffffff;
+  --texto: #2b2b33;
+  --texto-suave: #5f5f6b;
+  --terminal: #1e1e2e;
+  --terminal-texto: #e4e4ef;
+  --borde: #e6e1db;
+  --radio: 14px;
+}
+
+/* ---------- Reset: formateo inicial ---------- */
+/* Borra los márgenes y rellenos que cada navegador pone por defecto,
+   así la página se ve igual en todos */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth; /* desplazamiento suave al usar el índice */
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--texto);
+  background-color: var(--fondo);
+}
+
+/* ---------- Encabezado ---------- */
+header {
+  padding: 80px 24px 110px;
+  text-align: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--naranja-git) 0%, #c2185b 50%, var(--violeta) 100%);
+}
+
+header h1 {
+  margin: 0 auto 16px;
+  max-width: 800px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0 auto;
+  max-width: 620px;
+  font-size: 1.15rem;
+  color: #ffffff;
+  opacity: 0.92;
+}
+
+/* ---------- Índice ---------- */
+nav {
+  position: relative;
+  max-width: 860px;
+  margin: -60px auto 40px; /* se superpone al encabezado */
+  padding: 28px 32px;
+  background-color: var(--tarjeta);
+  border-radius: var(--radio);
+  box-shadow: 0 12px 32px rgba(43, 43, 51, 0.12);
+}
+
+nav h2 {
+  margin: 0 0 16px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--texto-suave);
+}
+
+nav ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: block;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: var(--texto);
+  text-decoration: none;
+  background-color: var(--fondo);
+  border-left: 4px solid var(--naranja-git);
+  border-radius: 8px;
+  transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  color: var(--naranja-git);
+  background-color: var(--naranja-suave);
+  transform: translateY(-2px);
+}
+
+/* ---------- Contenido principal ---------- */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+section {
+  margin-bottom: 40px;
+  padding: 40px;
+  background-color: var(--tarjeta);
+  border-radius: var(--radio);
+  border-top: 6px solid var(--naranja-git);
+  box-shadow: 0 4px 16px rgba(43, 43, 51, 0.06);
+  scroll-margin-top: 24px; /* deja aire arriba al saltar desde el índice */
+}
+
+/* Alterna el color del borde superior entre secciones */
+section:nth-of-type(even) {
+  border-top-color: var(--violeta);
+}
+
+/* ---------- Títulos ---------- */
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  font-size: 1.35rem;
+  border-bottom: 2px solid var(--borde);
+}
+
+/* Los pasos del flujo de trabajo se ven como etiquetas */
+h4 {
+  display: inline-block;
+  margin: 32px 0 12px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  color: var(--violeta);
+  background-color: #f1ebfc;
+  border-radius: 999px;
+}
+
+/* ---------- Texto ---------- */
+p {
+  margin-bottom: 16px;
+  color: var(--texto);
+}
+
+strong {
+  color: var(--naranja-git);
+}
+
+ul {
+  margin-bottom: 16px;
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li::marker {
+  color: var(--naranja-git);
+}
+
+/* ---------- Código ---------- */
+
+/* Código dentro del texto: aparece como una "pastilla" */
+code {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 0.88em;
+  padding: 2px 7px;
+  color: #b3361d;
+  background-color: var(--naranja-suave);
+  border-radius: 6px;
+}
+
+/* Bloques de comandos: se ven como una terminal */
+pre {
+  position: relative;
+  margin: 16px 0;
+  padding: 44px 22px 18px;
+  overflow-x: auto; /* los comandos largos se desplazan sin romper el diseño */
+  background-color: var(--terminal);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(30, 30, 46, 0.25);
+}
+
+/* Los tres puntos de colores de la ventana de la terminal */
+pre::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f57;
+  box-shadow: 20px 0 0 #febc2e, 40px 0 0 #28c840;
+}
+
+pre code {
+  padding: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--terminal-texto);
+  background: none;
+}
+
+/* ---------- Celulares ---------- */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 56px 20px 90px;
+  }
+
+  nav {
+    margin: -50px 16px 32px;
+    padding: 22px;
+  }
+
+  main {
+    padding: 0 16px 40px;
+  }
+
+  section {
+    padding: 26px 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
