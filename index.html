@@ -13,8 +13,16 @@
         qué hace cada uno y cuándo usarlo.
       </p>
     </header>
+    <nav>
+      <h2>Contenido</h2>
+      <ul>
+        <li><a href="#configuracion">Configuración inicial</a></li>
+        <li><a href="#trabajo-individual">Trabajo individual</a></li>
+        <li><a href="#trabajo-equipo">Trabajo en equipo</a></li>
+      </ul>
+    </nav>
     <main>
-      <section>
+      <section id="configuracion">
         <h2>1. Configuración inicial de Git</h2>
         <p>
           Antes de empezar a trabajar con Git, es necesario configurar algunos
@@ -60,6 +68,477 @@
         <p>
           Estos comandos nos permiten consultar la configuración sin
           modificarla.
+        </p>
+      </section>
+      <section id="trabajo-individual">
+        <h2>2. Buenas prácticas: trabajo individual</h2>
+
+        <p>
+          Cuando trabajamos solos en un proyecto, podemos gestionar nuestros
+          cambios directamente sobre la rama principal (<code>main</code>), sin
+          necesidad de coordinarlos con otros desarrolladores. Sin embargo, es
+          importante mantener un orden de trabajo para conservar un historial
+          claro de los cambios y evitar perder información.
+        </p>
+        <h3>Flujo de trabajo diario</h3>
+
+        <p>
+          Cuando trabajamos en un proyecto, es habitual realizar modificaciones
+          en los archivos y guardar esos cambios utilizando Git. El proceso
+          tiene cuatro pasos: revisar qué cambió, seleccionar los archivos,
+          crear un commit y subir los cambios a GitHub.
+        </p>
+        <pre><code>git status</code></pre>
+        <pre><code>git add archivo</code></pre>
+        <pre><code>git commit -m "tipo: mensaje"</code></pre>
+        <pre><code>git push</code></pre>
+
+        <ul>
+          <li>
+            <strong>git status:</strong> muestra el estado actual del
+            repositorio. Permite identificar qué archivos fueron modificados,
+            cuáles son nuevos y cuáles están preparados para el próximo commit.
+          </li>
+          <li>
+            <strong>git add:</strong> selecciona los archivos o cambios que
+            queremos incluir en el próximo commit.
+          </li>
+          <li>
+            <strong>git commit:</strong> registra los cambios preparados en el
+            historial del repositorio. El mensaje permite identificar qué se
+            modificó.
+          </li>
+          <li>
+            <strong>git push:</strong> envía los commits locales al repositorio
+            remoto, por ejemplo, GitHub.
+          </li>
+        </ul>
+
+        <h3>Buenas prácticas</h3>
+
+        <p>
+          Aunque trabajemos solos, es importante mantener ciertas prácticas que
+          nos ayuden a organizar el proyecto, evitar errores y conservar un
+          historial de cambios fácil de entender.
+        </p>
+
+        <ul>
+          <li>
+            <strong>Commits pequeños y frecuentes:</strong>
+            es preferible guardar cambios concretos que tengan un único
+            propósito, en lugar de acumular muchas modificaciones en un solo
+            commit.
+          </li>
+
+          <li>
+            <strong>Mensajes claros:</strong>
+            escribir mensajes que expliquen qué se modificó. Podemos utilizar
+            Conventional Commits, por ejemplo:
+            <code>feat: agrega formulario de registro</code> o
+            <code>fix: corrige validación de email</code>.
+          </li>
+
+          <li>
+            <strong>Hacer push regularmente:</strong>
+            subir los cambios a GitHub con frecuencia permite tener una copia
+            remota del trabajo y acceder a él desde otros dispositivos.
+          </li>
+
+          <li>
+            <strong>Actualizar antes de empezar:</strong>
+            si trabajamos desde más de una computadora, conviene ejecutar
+            <code>git pull</code> antes de comenzar para incorporar los cambios
+            que hayamos subido desde otro equipo.
+          </li>
+
+          <li>
+            <strong>Usar ramas para experimentar:</strong>
+            aunque trabajemos solos, podemos crear una rama para probar
+            funcionalidades o realizar modificaciones que todavía no estamos
+            seguros de conservar. Así podemos experimentar sin afectar
+            directamente a <code>main</code>.
+          </li>
+        </ul>
+      </section>
+      <section id="trabajo-equipo">
+        <h2>3. Buenas prácticas: trabajo en equipo</h2>
+
+        <p>
+          Cuando varias personas trabajan en un mismo proyecto, es necesario
+          organizar cómo se realizan y se incorporan los cambios para evitar
+          sobrescribir el trabajo de otros desarrolladores o generar conflictos.
+          Para eso, Git permite trabajar con ramas (<code>branches</code>), de
+          manera que cada integrante pueda desarrollar sus tareas de forma
+          independiente sin modificar directamente la rama principal.
+        </p>
+
+        <h3>Flujo de trabajo con ramas (GitHub Flow)</h3>
+
+        <p>
+          GitHub Flow es una metodología de trabajo que permite organizar el
+          desarrollo de un proyecto utilizando ramas. Cada desarrollador trabaja
+          en una rama independiente para realizar una tarea y, cuando termina,
+          propone incorporar sus cambios a la rama principal mediante un Pull
+          Request (PR).
+        </p>
+
+        <p>
+          De esta manera, los cambios pueden revisarse y aprobarse antes de
+          integrarse a <code>main</code>, ayudando a mantener el proyecto
+          organizado y funcionando correctamente.
+        </p>
+
+        <h4>1. Actualizar la rama principal</h4>
+
+        <p>
+          Antes de comenzar una nueva tarea, debemos posicionarnos en la rama
+          principal (<code>main</code>) y descargar los últimos cambios del
+          repositorio remoto. Esto permite comenzar a trabajar sobre una versión
+          actualizada del proyecto.
+        </p>
+
+        <pre><code>git switch main
+git pull</code></pre>
+
+        <p>
+          <strong>git switch main:</strong> cambia a la rama principal del
+          proyecto.
+        </p>
+
+        <p>
+          <strong>git pull:</strong> descarga e incorpora los cambios más
+          recientes del repositorio remoto a nuestra rama local.
+        </p>
+
+        <h4>2. Crear una rama para nuestra tarea</h4>
+
+        <p>
+          Una vez que tenemos <code>main</code> actualizado, creamos una nueva
+          rama para trabajar en nuestra tarea. Es recomendable utilizar un
+          nombre descriptivo que indique qué funcionalidad vamos a desarrollar o
+          qué problema vamos a corregir.
+        </p>
+
+        <pre><code>git switch -c feat/nombre-de-la-tarea</code></pre>
+
+        <p>
+          Este comando crea una nueva rama y nos posiciona automáticamente en
+          ella. A partir de ese momento, todos los cambios y commits que
+          realicemos quedarán asociados a esa rama.
+        </p>
+        <h4>3. Trabajar y guardar los cambios</h4>
+
+        <p>
+          Una vez creada la rama, podemos trabajar en nuestra tarea sin
+          modificar directamente la rama principal. Cuando tengamos cambios para
+          guardar, primero los preparamos y luego creamos un commit.
+        </p>
+
+        <pre><code>git status
+git add .
+git commit -m "feat: agregar formulario de registro"</code></pre>
+
+        <ul>
+          <li>
+            <strong>git status:</strong> muestra qué archivos fueron
+            modificados.
+          </li>
+          <li>
+            <strong>git add .:</strong> prepara todos los cambios para
+            incluirlos en el próximo commit.
+          </li>
+          <li>
+            <strong>git commit:</strong> guarda los cambios preparados en el
+            historial de Git, con un mensaje que describe qué hicimos.
+          </li>
+        </ul>
+        <h4>4. Subir nuestra rama al repositorio remoto</h4>
+
+        <p>
+          Una vez que guardamos nuestros cambios mediante uno o varios commits,
+          debemos subir nuestra rama a GitHub. De esta manera, los demás
+          integrantes del equipo podrán acceder a nuestro trabajo.
+        </p>
+
+        <pre><code>git push -u origin feat/nombre-de-la-tarea</code></pre>
+
+        <ul>
+          <li>
+            <strong>git push:</strong> envía los commits de nuestra rama local
+            al repositorio remoto.
+          </li>
+          <li>
+            <strong>origin:</strong> es el nombre habitual que Git asigna al
+            repositorio remoto.
+          </li>
+          <li>
+            <strong>-u:</strong> establece una relación entre nuestra rama local
+            y la rama remota. Así, en los próximos envíos podremos utilizar
+            simplemente <code>git push</code>.
+          </li>
+        </ul>
+        <h4>5. Crear un Pull Request (PR)</h4>
+
+        <p>
+          Después de subir nuestra rama a GitHub, debemos crear un Pull Request.
+          Este mecanismo permite proponer que los cambios realizados en nuestra
+          rama se incorporen a otra rama, generalmente <code>main</code>.
+        </p>
+
+        <p>
+          Para crearlo, ingresamos al repositorio en GitHub y seleccionamos la
+          opción <strong>Compare &amp; pull request</strong>. Allí debemos
+          verificar que la rama de destino sea <code>main</code> y que la rama
+          de origen sea la que contiene nuestros cambios.
+        </p>
+
+        <p>
+          En el Pull Request podemos agregar un título y una descripción
+          explicando qué modificamos y por qué. Luego, lo creamos para que otros
+          integrantes del equipo puedan revisar el código.
+        </p>
+
+        <ul>
+          <li>
+            <strong>Revisión de código (Code Review):</strong> otros
+            desarrolladores pueden revisar los cambios, dejar comentarios y
+            solicitar modificaciones antes de integrarlos.
+          </li>
+          <li>
+            <strong>Aprobación:</strong> si los cambios cumplen con los
+            criterios del equipo, pueden aprobarse para continuar con la
+            integración.
+          </li>
+        </ul>
+        <h4>6. Aprobar y fusionar el Pull Request (Merge)</h4>
+
+        <p>
+          Una vez revisados los cambios, si el equipo considera que están
+          correctos, el Pull Request puede aprobarse y fusionarse con la rama
+          principal (<code>main</code>).
+        </p>
+
+        <p>
+          Para hacerlo, ingresamos al Pull Request en GitHub y seleccionamos la
+          opción <strong>Merge pull request</strong>. Luego confirmamos la
+          operación.
+        </p>
+
+        <p>
+          El proceso de merge integra los cambios de nuestra rama con la rama de
+          destino. De esta manera, las modificaciones pasan a formar parte del
+          proyecto principal.
+        </p>
+
+        <ul>
+          <li>
+            <strong>Merge:</strong> combina los cambios de una rama con otra.
+          </li>
+          <li>
+            <strong>Conflictos:</strong> pueden aparecer cuando dos
+            desarrolladores modifican partes incompatibles de un mismo archivo.
+            En ese caso, es necesario resolverlos antes de completar la
+            integración.
+          </li>
+        </ul>
+        <h4>7. Actualizar main y eliminar la rama de trabajo</h4>
+
+        <p>
+          Una vez que el Pull Request fue fusionado, podemos volver a nuestra
+          rama principal y actualizarla para incorporar los últimos cambios.
+          Después, podemos eliminar la rama que utilizamos para desarrollar
+          nuestra tarea, ya que dejó de ser necesaria.
+        </p>
+
+        <pre><code>git switch main
+git pull
+git branch -d feat/nombre-de-la-tarea</code></pre>
+
+        <ul>
+          <li><strong>git switch main:</strong> vuelve a la rama principal.</li>
+          <li>
+            <strong>git pull:</strong> actualiza nuestra rama local con los
+            últimos cambios del repositorio remoto.
+          </li>
+          <li>
+            <strong>git branch -d:</strong> elimina la rama local que ya fue
+            fusionada.
+          </li>
+        </ul>
+
+        <p>
+          También podemos eliminar la rama remota desde GitHub, una vez
+          completado el Pull Request, si ya no necesitamos conservarla.
+        </p>
+        <h3>Buenas prácticas para trabajar en equipo</h3>
+
+        <p>
+          Además de seguir un flujo de trabajo ordenado, es importante
+          establecer ciertos hábitos que faciliten la colaboración entre
+          desarrolladores y ayuden a evitar problemas en el proyecto.
+        </p>
+
+        <ul>
+          <li>
+            <strong>Una tarea, una rama:</strong> crear una rama independiente
+            para cada funcionalidad o corrección.
+          </li>
+          <li>
+            <strong>Actualizar antes de trabajar:</strong> incorporar los
+            últimos cambios de <code>main</code> antes de comenzar una nueva
+            tarea.
+          </li>
+          <li>
+            <strong>Evitar trabajar directamente sobre main:</strong>
+            utilizar ramas para desarrollar y probar cambios sin afectar la
+            versión principal del proyecto.
+          </li>
+          <li>
+            <strong>Revisar el código de otros:</strong> participar en los Pull
+            Requests, aportar comentarios y detectar posibles errores.
+          </li>
+          <li>
+            <strong>Resolver conflictos:</strong> comunicarse con el equipo
+            cuando dos cambios entren en conflicto y acordar cómo integrarlos.
+          </li>
+          <li>
+            <strong>Usar mensajes descriptivos:</strong> escribir commits que
+            permitan entender rápidamente qué se modificó.
+          </li>
+        </ul>
+        <h3>Conflictos en Git (Merge Conflicts)</h3>
+
+        <p>
+          Un conflicto ocurre cuando Git no puede combinar automáticamente dos
+          conjuntos de cambios. Esto puede suceder, por ejemplo, cuando dos
+          desarrolladores modifican las mismas líneas de un archivo de manera
+          diferente.
+        </p>
+
+        <p>
+          Cuando aparece un conflicto, Git necesita que indiquemos qué cambios
+          queremos conservar antes de completar la integración de las ramas.
+        </p>
+
+        <h4>¿Cómo identificar un conflicto?</h4>
+
+        <p>
+          Al intentar fusionar dos ramas, Git informa que existen conflictos y
+          deja marcadas las partes del archivo que necesitan resolverse. Podemos
+          consultar qué archivos están afectados utilizando:
+        </p>
+
+        <pre><code>git status</code></pre>
+
+        <p>Dentro del archivo encontraremos marcas similares a estas:</p>
+
+        <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Cambios de nuestra rama
+=======
+Cambios de la otra rama
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; otra-rama</code></pre>
+
+        <ul>
+          <li>
+            <strong>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:</strong>
+            indica el comienzo de los cambios de la rama actual.
+          </li>
+          <li>
+            <strong>=======:</strong> separa las dos versiones del contenido.
+          </li>
+          <li>
+            <strong>&gt;&gt;&gt;&gt;&gt;&gt;&gt; otra-rama:</strong>
+            indica el final de los cambios de la otra rama.
+          </li>
+        </ul>
+
+        <h4>¿Cómo resolverlo?</h4>
+
+        <p>
+          Debemos abrir el archivo afectado, revisar ambas versiones y decidir
+          qué contenido conservar. Podemos elegir una de ellas o combinar partes
+          de ambas. Después, eliminamos las marcas del conflicto y guardamos el
+          archivo.
+        </p>
+
+        <p>
+          Una vez resuelto, indicamos a Git que el archivo está listo y
+          completamos la operación de merge:
+        </p>
+
+        <pre><code>git add archivo</code></pre>
+        <pre><code>git status</code></pre>
+        <pre><code>git commit</code></pre>
+        <p>
+          En algunos casos, Git completa la integración automáticamente. Si el
+          merge quedó pendiente por un conflicto, después de resolverlo y
+          preparar los archivos con <code>git add</code>, podemos finalizarlo
+          utilizando <code>git commit</code>.
+        </p>
+
+        <ul>
+          <li><strong>git add:</strong> marca el archivo como resuelto.</li>
+          <li>
+            <strong>git status:</strong> permite verificar que ya no quedan
+            conflictos pendientes.
+          </li>
+          <li>
+            <strong>git commit:</strong> completa la integración de los cambios
+            cuando el merge requiere un commit.
+          </li>
+        </ul>
+
+        <p>
+          Es importante revisar el resultado y probar que el proyecto siga
+          funcionando correctamente antes de continuar.
+        </p>
+        <h3>Otros comandos útiles de Git</h3>
+
+        <p>
+          Además de los comandos utilizados en el flujo de trabajo, existen
+          otras herramientas que nos permiten consultar el historial, comparar
+          modificaciones y administrar las ramas del proyecto.
+        </p>
+
+        <h4>Consultar y administrar ramas</h4>
+
+        <pre><code>git branch</code></pre>
+        <pre><code>git branch -a</code></pre>
+        <pre><code>git switch nombre-de-la-rama</code></pre>
+
+        <ul>
+          <li>
+            <strong>git branch:</strong> muestra las ramas locales del
+            repositorio y marca con un asterisco (*) la rama en la que estamos
+            trabajando.
+          </li>
+          <li>
+            <strong>git branch -a:</strong> muestra las ramas locales y las
+            ramas remotas.
+          </li>
+          <li>
+            <strong>git switch:</strong> permite cambiar de una rama a otra.
+          </li>
+        </ul>
+
+        <h4>Consultar el historial de cambios</h4>
+
+        <pre><code>git log --oneline</code></pre>
+
+        <p>
+          Muestra el historial de commits en un formato resumido, incluyendo el
+          identificador y el mensaje de cada commit.
+        </p>
+
+        <h4>Comparar modificaciones</h4>
+
+        <pre><code>git diff</code></pre>
+
+        <p>
+          Permite visualizar las diferencias entre los cambios realizados en los
+          archivos y los cambios que ya fueron preparados para el próximo
+          commit. Por defecto, muestra los cambios que todavía no fueron
+          preparados con <code>git add</code>.
         </p>
       </section>
     </main>
