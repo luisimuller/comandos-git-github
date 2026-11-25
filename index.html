@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comandos Git y GitHub</title>
+  </head>
+  <body>
+    <header>
+      <h1>Comandos Git y GitHub útiles</h1>
+      <p>
+        Guía personal de comandos de Git y GitHub, con una explicación breve de
+        qué hace cada uno y cuándo usarlo.
+      </p>
+    </header>
+    <main>
+      <section>
+        <h2>1. Configuración inicial de Git</h2>
+        <p>
+          Antes de empezar a trabajar con Git, es necesario configurar algunos
+          datos que permitan identificar quién realiza los cambios en un
+          proyecto. Esta configuración se hace una sola vez por computadora, ya
+          que Git la guarda y la utiliza en todos los repositorios en los que
+          trabajemos.
+        </p>
+        <h3>Configurar nombre y correo electrónico</h3>
+        <p>
+          Cada vez que guardamos un conjunto de cambios mediante un commit, Git
+          registra quién lo realizó. Para eso, debemos configurar nuestro nombre
+          y correo electrónico:
+        </p>
+        <pre><code>git config --global user.name "Tu Nombre"</code></pre>
+        <pre><code>git config --global user.email "tu-email@ejemplo.com"</code></pre>
+        <p>
+          El nombre y el correo que configuremos quedarán asociados a nuestros
+          commits, permitiendo identificar al autor de cada modificación.
+        </p>
+        <h3>Establecer <code>main</code> como rama principal</h3>
+        <p>
+          Cuando creamos un repositorio nuevo, Git necesita definir cuál será su
+          rama inicial. Con el siguiente comando podemos establecer main como
+          nombre predeterminado, utilizando el mismo criterio que GitHub:
+        </p>
+        <pre><code>git config --global init.defaultBranch main</code></pre>
+        <p>
+          De esta manera, cada vez que inicialicemos un repositorio nuevo, su
+          rama principal se llamará main automáticamente.
+        </p>
+        <h3>Verificar la configuración</h3>
+        <p>
+          Si queremos comprobar que nuestro nombre quedó configurado
+          correctamente, podemos ejecutar:
+        </p>
+        <pre><code>git config --global user.name</code></pre>
+        <p>
+          Git nos devolverá el nombre que guardamos. De la misma manera, podemos
+          verificar nuestro correo electrónico:
+        </p>
+        <pre><code>git config --global user.email</code></pre>
+        <p>
+          Estos comandos nos permiten consultar la configuración sin
+          modificarla.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
